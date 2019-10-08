@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, RemoteImage, useUser } from 'react-components';
+import { Icon, RemoteImage, useUser, classnames } from 'react-components';
 import { getInitial } from 'proton-shared/lib/helpers/string';
 
 import { getFirstValue } from '../helpers/properties';
@@ -8,7 +8,7 @@ import { formatAdr } from '../helpers/property';
 
 import './ContactSummary.scss';
 
-const ContactSummary = ({ properties }) => {
+const ContactSummary = ({ properties, leftBlockWidth = 'w30' }) => {
     const [user] = useUser();
     const { hasPaidMail } = user;
     const photo = getFirstValue(properties, 'photo');
@@ -34,7 +34,7 @@ const ContactSummary = ({ properties }) => {
 
     return (
         <div className="bg-global-light flex flex-nowrap p1 mb1 border-bottom">
-            <div className="aligncenter contactsummary-photo-container w30">
+            <div className={classnames(['aligncenter contactsummary-photo-container', leftBlockWidth])}>
                 {photo ? (
                     <RemoteImage src={photo} className="rounded50" />
                 ) : (
@@ -63,7 +63,8 @@ const ContactSummary = ({ properties }) => {
 };
 
 ContactSummary.propTypes = {
-    properties: PropTypes.array.isRequired
+    properties: PropTypes.array.isRequired,
+    leftBlockWidth: PropTypes.string
 };
 
 export default ContactSummary;
