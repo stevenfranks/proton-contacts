@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment';
 import PropTypes from 'prop-types';
-import { Row, Group, ButtonGroup, Copy, Icon, useModals, useUser, classnames } from 'react-components';
+import { Row, Group, Button, Copy, Icon, useModals, useUser, classnames } from 'react-components';
 
 import { clearType, getType, formatAdr } from '../helpers/property';
 import ContactGroupIcon from './ContactGroupIcon';
@@ -86,17 +86,17 @@ const ContactViewProperty = ({
                         {hasPaidMail ? (
                             <>
                                 <ContactGroupDropdown
-                                    className="pm-button pm-button--small pm-group-button"
+                                    className="pm-button pm-button--small pm-group-button mr0-5"
                                     contactEmails={[contactEmail]}
                                 >
                                     <Icon name="contacts-groups" />
                                 </ContactGroupDropdown>
-                                <ButtonGroup onClick={handleSettings} className="pm-button--small">
+                                <Button onClick={handleSettings} className="pm-button--small mr0-5">
                                     <Icon name="settings-singular" />
-                                </ButtonGroup>
+                                </Button>
                             </>
                         ) : null}
-                        <Copy className="pm-button--small pm-group-button" value={value} />
+                        <Copy className="pm-button--small" value={value} />
                     </Group>
                 );
             }
